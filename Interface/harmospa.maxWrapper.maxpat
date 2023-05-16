@@ -41,6 +41,47 @@
 		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
 				"box" : 				{
+					"id" : "obj-38",
+					"maxclass" : "comment",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 450.0, 345.0, 120.0, 20.0 ],
+					"presentation" : 1,
+					"presentation_rect" : [ 538.0, 75.0, 120.0, 20.0 ],
+					"text" : "Audio/Midi",
+					"textjustification" : 1
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontsize" : 16.0,
+					"id" : "obj-33",
+					"maxclass" : "live.menu",
+					"numinlets" : 1,
+					"numoutlets" : 3,
+					"outlettype" : [ "", "", "float" ],
+					"parameter_enable" : 1,
+					"patching_rect" : [ 1232.5, 105.0, 150.0, 23.0 ],
+					"presentation" : 1,
+					"presentation_rect" : [ 129.50000536441803, 228.666669726371765, 165.0, 23.0 ],
+					"saved_attribute_attributes" : 					{
+						"valueof" : 						{
+							"parameter_enum" : [ "<None>", "Concordance", "Roughness", "Harmonicity" ],
+							"parameter_longname" : "live.menu[1]",
+							"parameter_mmax" : 3,
+							"parameter_shortname" : "live.menu",
+							"parameter_type" : 2
+						}
+
+					}
+,
+					"varname" : "live.menu[1]"
+				}
+
+			}
+, 			{
+				"box" : 				{
 					"id" : "obj-100",
 					"maxclass" : "newobj",
 					"numinlets" : 1,
@@ -93,7 +134,7 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 50.0, 250.0, 50.0, 22.0 ],
-									"text" : "20 146"
+									"text" : "377 13"
 								}
 
 							}
@@ -1108,7 +1149,7 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 408.0, 549.0, 50.0, 22.0 ],
-									"text" : "67."
+									"text" : "9."
 								}
 
 							}
@@ -1120,7 +1161,7 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 212.0, 588.0, 206.0, 22.0 ],
-									"text" : "midievent 144 64 0"
+									"text" : "midievent 144 62 0"
 								}
 
 							}
@@ -1277,7 +1318,7 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 479.0, 210.0, 50.0, 35.0 ],
-									"text" : "4.782765"
+									"text" : "2.111311"
 								}
 
 							}
@@ -1290,7 +1331,7 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 592.0, 199.0, 50.0, 35.0 ],
-									"text" : "1.179963"
+									"text" : "5.053803"
 								}
 
 							}
@@ -1398,7 +1439,7 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 615.0, 371.5, 96.0, 22.0 ],
-									"text" : "65.962728 0"
+									"text" : "67.165114 0"
 								}
 
 							}
@@ -1482,7 +1523,7 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 182.5, 373.5, 75.0, 22.0 ],
-									"text" : "64.782765 0"
+									"text" : "62.111311 0"
 								}
 
 							}
@@ -2023,8 +2064,6 @@
 					"outlettype" : [ "", "" ],
 					"parameter_enable" : 1,
 					"patching_rect" : [ 1978.0, 357.0, 90.0, 30.0 ],
-					"presentation" : 1,
-					"presentation_rect" : [ 578.0, 165.268041670322418, 108.0, 24.608247220516205 ],
 					"saved_attribute_attributes" : 					{
 						"valueof" : 						{
 							"parameter_enum" : [ "val1", "val2" ],
@@ -3359,7 +3398,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 1332.0, 381.0, 225.0, 22.0 ],
-					"text" : "conc_organUndaMaris.png"
+					"text" : "conc_cello0.png"
 				}
 
 			}
@@ -4222,7 +4261,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 1241.5, 205.0, 139.0, 22.0 ],
-					"text" : "14"
+					"text" : "8"
 				}
 
 			}
@@ -4300,7 +4339,7 @@
 					"parameter_enable" : 1,
 					"patching_rect" : [ 417.0, 850.0, 48.0, 136.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 876.989694476127625, 33.876288890838623, 48.0, 136.0 ],
+					"presentation_rect" : [ 704.989694476127625, 54.664947211742401, 48.0, 136.0 ],
 					"saved_attribute_attributes" : 					{
 						"valueof" : 						{
 							"parameter_longname" : "live.gain~",
@@ -4328,7 +4367,7 @@
 					"parameter_enable" : 1,
 					"patching_rect" : [ 320.0, 353.0, 15.0, 15.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 645.0, 21.5, 15.0, 15.0 ],
+					"presentation_rect" : [ 621.0, 120.0, 15.0, 15.0 ],
 					"saved_attribute_attributes" : 					{
 						"activebgoncolor" : 						{
 							"expression" : ""
@@ -4357,7 +4396,7 @@
 					"numoutlets" : 0,
 					"patching_rect" : [ 320.0, 323.0, 65.0, 18.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 578.0, 20.0, 65.0, 18.0 ],
+					"presentation_rect" : [ 554.0, 118.5, 65.0, 18.0 ],
 					"text" : "Midi In Flux",
 					"textjustification" : 1
 				}
@@ -4387,7 +4426,7 @@
 					"parameter_enable" : 1,
 					"patching_rect" : [ 792.216500043869019, 366.185566663742065, 90.0, 30.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 570.0, 41.0, 90.0, 21.0 ],
+					"presentation_rect" : [ 546.0, 139.5, 90.0, 21.0 ],
 					"saved_attribute_attributes" : 					{
 						"valueof" : 						{
 							"parameter_enum" : [ "val1", "val2" ],
@@ -4412,7 +4451,7 @@
 					"numoutlets" : 0,
 					"patching_rect" : [ 435.0, 330.0, 120.0, 20.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 390.0, 75.0, 210.0, 20.0 ],
+					"presentation_rect" : [ 390.0, 75.0, 120.0, 20.0 ],
 					"text" : "Open patchers",
 					"textjustification" : 1
 				}
@@ -4656,8 +4695,25 @@
 					"numoutlets" : 0,
 					"patching_rect" : [ 45.0, 30.0, 645.0, 47.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 15.0, 15.0, 645.0, 47.0 ],
-					"text" : "HARMOSPA.MAXWRAPPER"
+					"presentation_rect" : [ 184.0, 5.5, 293.0, 47.0 ],
+					"text" : "HARMOSPACE"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"angle" : 270.0,
+					"background" : 1,
+					"bgcolor" : [ 0.2, 0.2, 0.2, 0.25 ],
+					"id" : "obj-36",
+					"maxclass" : "panel",
+					"mode" : 0,
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 644.0, 173.0, 128.0, 128.0 ],
+					"presentation" : 1,
+					"presentation_rect" : [ 56.0, 63.5, 620.0, 128.0 ],
+					"proportion" : 0.5
 				}
 
 			}
@@ -5212,6 +5268,7 @@
 			"obj-26" : [ "live.button", "live.button", 0 ],
 			"obj-27::obj-1" : [ "vst~", "vst~", 0 ],
 			"obj-28" : [ "live.menu", "live.menu", 0 ],
+			"obj-33" : [ "live.menu[1]", "live.menu", 0 ],
 			"obj-42" : [ "live.text[1]", "live.text", 0 ],
 			"obj-5" : [ "live.gain~", "live.gain~", 0 ],
 			"obj-6::obj-12" : [ "live.gain~[1]", "live.gain~[1]", 0 ],
@@ -5258,7 +5315,7 @@
 				"implicit" : 1
 			}
 , 			{
-				"name" : "conc_organUndaMaris.png",
+				"name" : "conc_cello0.png",
 				"bootpath" : "~/Github/HarmonicSpaces/images/maps",
 				"patcherrelativepath" : "../images/maps",
 				"type" : "PNG",
@@ -5293,7 +5350,7 @@
 				"implicit" : 1
 			}
 , 			{
-				"name" : "shape_organUndaMaris.png",
+				"name" : "shape_cello0.png",
 				"bootpath" : "~/Github/HarmonicSpaces/images/spectrum",
 				"patcherrelativepath" : "../images/spectrum",
 				"type" : "PNG",
