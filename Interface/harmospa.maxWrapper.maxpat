@@ -62,12 +62,12 @@
 					"numoutlets" : 3,
 					"outlettype" : [ "", "", "float" ],
 					"parameter_enable" : 1,
-					"patching_rect" : [ 1232.5, 105.0, 150.0, 23.0 ],
+					"patching_rect" : [ 1388.5, 90.0, 150.0, 23.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 129.50000536441803, 228.666669726371765, 165.0, 23.0 ],
 					"saved_attribute_attributes" : 					{
 						"valueof" : 						{
-							"parameter_enum" : [ "<None>", "Concordance", "Roughness", "Harmonicity" ],
+							"parameter_enum" : [ "Descriptor", "Concordance", "Roughness", "Harmonicity" ],
 							"parameter_longname" : "live.menu[1]",
 							"parameter_mmax" : 3,
 							"parameter_shortname" : "live.menu",
@@ -134,7 +134,7 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 50.0, 250.0, 50.0, 22.0 ],
-									"text" : "377 13"
+									"text" : "0 114"
 								}
 
 							}
@@ -1140,32 +1140,7 @@
 						"style" : "",
 						"subpatcher_template" : "",
 						"assistshowspatchername" : 0,
-						"visible" : 1,
 						"boxes" : [ 							{
-								"box" : 								{
-									"id" : "obj-16",
-									"maxclass" : "message",
-									"numinlets" : 2,
-									"numoutlets" : 1,
-									"outlettype" : [ "" ],
-									"patching_rect" : [ 408.0, 549.0, 50.0, 22.0 ],
-									"text" : "9."
-								}
-
-							}
-, 							{
-								"box" : 								{
-									"id" : "obj-14",
-									"maxclass" : "message",
-									"numinlets" : 2,
-									"numoutlets" : 1,
-									"outlettype" : [ "" ],
-									"patching_rect" : [ 212.0, 588.0, 206.0, 22.0 ],
-									"text" : "midievent 144 62 0"
-								}
-
-							}
-, 							{
 								"box" : 								{
 									"id" : "obj-7",
 									"maxclass" : "message",
@@ -1318,7 +1293,7 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 479.0, 210.0, 50.0, 35.0 ],
-									"text" : "2.111311"
+									"text" : "6.894075"
 								}
 
 							}
@@ -1331,7 +1306,7 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 592.0, 199.0, 50.0, 35.0 ],
-									"text" : "5.053803"
+									"text" : "8.816327"
 								}
 
 							}
@@ -1439,7 +1414,7 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 615.0, 371.5, 96.0, 22.0 ],
-									"text" : "67.165114 0"
+									"text" : "75.710402 0"
 								}
 
 							}
@@ -1523,7 +1498,7 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 182.5, 373.5, 75.0, 22.0 ],
-									"text" : "62.111311 0"
+									"text" : "66.894075 0"
 								}
 
 							}
@@ -1862,13 +1837,6 @@
 							}
 , 							{
 								"patchline" : 								{
-									"destination" : [ "obj-14", 1 ],
-									"source" : [ "obj-148", 1 ]
-								}
-
-							}
-, 							{
-								"patchline" : 								{
 									"destination" : [ "obj-147", 1 ],
 									"source" : [ "obj-148", 0 ]
 								}
@@ -1914,15 +1882,6 @@
 , 							{
 								"patchline" : 								{
 									"destination" : [ "obj-148", 5 ],
-									"order" : 1,
-									"source" : [ "obj-27", 0 ]
-								}
-
-							}
-, 							{
-								"patchline" : 								{
-									"destination" : [ "obj-16", 1 ],
-									"order" : 0,
 									"source" : [ "obj-27", 0 ]
 								}
 
@@ -2204,6 +2163,7 @@
 						"style" : "",
 						"subpatcher_template" : "",
 						"assistshowspatchername" : 0,
+						"visible" : 1,
 						"boxes" : [ 							{
 								"box" : 								{
 									"id" : "obj-19",
@@ -2272,7 +2232,7 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 446.947368421052602, 421.0, 78.0, 22.0 ],
-									"text" : "shape_7.png"
+									"text" : "shape_9.png"
 								}
 
 							}
@@ -2284,7 +2244,7 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 379.78947368421052, 394.0, 78.0, 22.0 ],
-									"text" : "shape_5.png"
+									"text" : "shape_7.png"
 								}
 
 							}
@@ -2296,7 +2256,7 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 312.631578947368439, 421.0, 78.0, 22.0 ],
-									"text" : "shape_4.png"
+									"text" : "shape_5.png"
 								}
 
 							}
@@ -2356,7 +2316,7 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 448.947368421052602, 178.0, 71.0, 22.0 ],
-									"text" : "conc_7.png"
+									"text" : "conc_9.png"
 								}
 
 							}
@@ -2368,7 +2328,7 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 381.78947368421052, 151.0, 71.0, 22.0 ],
-									"text" : "conc_5.png"
+									"text" : "conc_7.png"
 								}
 
 							}
@@ -2380,7 +2340,7 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 314.631578947368439, 178.0, 71.0, 22.0 ],
-									"text" : "conc_4.png"
+									"text" : "conc_5.png"
 								}
 
 							}
@@ -3398,7 +3358,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 1332.0, 381.0, 225.0, 22.0 ],
-					"text" : "conc_cello0.png"
+					"text" : "empty_map.png"
 				}
 
 			}
@@ -4261,7 +4221,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 1241.5, 205.0, 139.0, 22.0 ],
-					"text" : "8"
+					"text" : "0"
 				}
 
 			}
@@ -4279,7 +4239,7 @@
 					"presentation_rect" : [ 323.50000536441803, 228.666669726371765, 165.0, 23.0 ],
 					"saved_attribute_attributes" : 					{
 						"valueof" : 						{
-							"parameter_enum" : [ "<None>", "1 partiel", "2 partiels", "3 partiels", "5 partiels", "7 partiels", "9 partiels", "11 partiels", "Violoncelle", "Violoncelle vibrato", "Violoncelle vibrato F", "Trumpet", "Trumpet F", "Cor", "Orgue unda maris", "Orgue voix humaine", "Orgue tutti", "choeur d'hommes A", "choeur d'hommes O", "Cloche tubulaire" ],
+							"parameter_enum" : [ "Instrument", "1 partial", "2 partials", "3 partials", "5 partials", "7 partials", "9 partials", "11 partials", "Cello", "Cello vibrato", "Cello vibrato Forte", "Trumpet", "Trumpet F", "Cor", "Organ unda maris", "Organ voix humaine", "Organ tutti", "Men choir A", "Men choir O", "Bell" ],
 							"parameter_longname" : "live.menu",
 							"parameter_mmax" : 19,
 							"parameter_shortname" : "live.menu",
@@ -4557,7 +4517,7 @@
 					"fontname" : "Arial",
 					"fontsize" : 13.0,
 					"id" : "obj-22",
-					"items" : [ "MPK Mini Mk II", ",", "to Max 1", ",", "to Max 2" ],
+					"items" : [ "to Max 1", ",", "to Max 2" ],
 					"maxclass" : "umenu",
 					"numinlets" : 1,
 					"numoutlets" : 3,
@@ -5315,7 +5275,7 @@
 				"implicit" : 1
 			}
 , 			{
-				"name" : "conc_cello0.png",
+				"name" : "conc_celloVibr0.png",
 				"bootpath" : "~/Github/HarmonicSpaces/images/maps",
 				"patcherrelativepath" : "../images/maps",
 				"type" : "PNG",
@@ -5350,7 +5310,7 @@
 				"implicit" : 1
 			}
 , 			{
-				"name" : "shape_cello0.png",
+				"name" : "shape_celloVibr0.png",
 				"bootpath" : "~/Github/HarmonicSpaces/images/spectrum",
 				"patcherrelativepath" : "../images/spectrum",
 				"type" : "PNG",

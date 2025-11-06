@@ -1,0 +1,13 @@
+build
+CMakeUserPresets.json
+
+Generated/*
+
+*.zip
+node_modules
+dist
+
+.vscode
+
+analyse/env/
+.DS_Store

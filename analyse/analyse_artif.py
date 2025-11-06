@@ -13,15 +13,27 @@ PATH_SCRIPT = Path(__file__).parent.resolve()
 # Constants
 BINS_PER_OCTAVE = 12*16
 Notemin = 'C2'
-Notemax = 'D9'
+Notemax = 'D7'
 ambitus = 12
 ε = 1./(BINS_PER_OCTAVE/12)
 
+# Timbre
+K = 0 # Number of partials
+decr = 0.5 # decr
+σ = 0.007 # Largeur spectrale
 
-# Load audio
-n_bins = int((librosa.note_to_midi(Notemax) - librosa.note_to_midi(Notemin))*BINS_PER_OCTAVE/12)
-chrom = np.abs(librosa.cqt(y, sr=sr, hop_length=512, fmin=fmin, bins_per_octave=BINS_PER_OCTAVE, n_bins=n_bins, window=np.hanning))
-spectrum = np.mean(chrom, axis=1)
+# Construct spectrum
+fmin = librosa.note_to_hz(Notemin)
+fmax = librosa.note_to_hz(Notemax)
+f0 = 100
+n = np.arange(np.log2(fmin), np.log2(fmax), 1./BINS_PER_OCTAVE)
+n_bins = len(n)
+
+
+spectrum = [0 for i in range(n_bins)]
+
+for k in range(1, K+1):
+    spectrum += (1/k**decr) * np.exp(-(n - np.log2(k*f0))**2 / (2 * σ**2))
 
 # Concordance courbe
 courbe = np.correlate(spectrum,spectrum,'full')
@@ -40,7 +52,7 @@ def map():
 # Plot spectrum
 def plotSpectrum():
     f, ax = plt.subplots(1)
-    x = range(n_bins)
+    x = range(len(n))
     plt.plot(x,spectrum)
     plt.xlabel('Pitch axis')
     plt.ylabel('Amplitude')
@@ -57,11 +69,12 @@ def plotMap():
     subd = 1
     interv = np.arange(0,ambitus+ε,ε)
     C = map()
+    print(np.max(C))
     # np.save('Harmonicity_K{}_15'.format(K),C)
     # with open('Harmonicity_K{}.npy'.format(K), 'rb') as f:
     #     C = np.transpose(np.load(f))
     fig, ax = plt.subplots(1,figsize=(9, 7))
-    cs = ax.contourf(interv,interv,np.log(C),300,cmap=cm.jet)
+    cs = ax.contourf(interv,interv,np.log(1+2*C),300,cmap=cm.jet)
     if plotlines:
         plt.vlines(np.arange(0, ambitus, 1.0/subd), 0, interv[-1], alpha=0.4, linestyle='--', linewidth = 1.0)
         plt.hlines(np.arange(0, ambitus, 1.0/subd), 0, interv[-1], alpha=0.4, linestyle='--', linewidth = 1.0)
@@ -71,5 +84,9 @@ def plotMap():
     cbar = fig.colorbar(cs)
     plt.show()
 
-# plotSpectrum()
+plotSpectrum()
 plotMap()
+
+# f, ax = plt.subplots(1)
+# plt.plot(range(len(courbe)), courbe)
+# plt.show()
