@@ -1,29 +1,33 @@
-import operator
-import argparse
+import os
 from pathlib import Path
-from sys import argv
+import argparse
 import numpy as np
-import matplotlib.pyplot as plt
-from matplotlib import ticker, cm
 import librosa
+import matplotlib.pyplot as plt
+from matplotlib import cm
 
+print("Analyse in process...")
 # Paths
 PATH_SCRIPT = Path(__file__).parent.resolve()
-PATH_OUTPUT_MAP = str(PATH_SCRIPT.parent) + "/images/maps/"
-PATH_OUTPUT_SPECTRUM = str(PATH_SCRIPT.parent) + "/images/spectrum/"
+PATH_OUTPUT_MAP = PATH_SCRIPT.parent / "images" / "maps"  # Utilisation de / pour les Path
+PATH_OUTPUT_SPECTRUM = PATH_SCRIPT.parent / "images" / "spectrum"
+
+# Créer les dossiers s'ils n'existent pas
+PATH_OUTPUT_MAP.mkdir(parents=True, exist_ok=True)
+PATH_OUTPUT_SPECTRUM.mkdir(parents=True, exist_ok=True)
 
 # Help for use of the script
 parser = argparse.ArgumentParser(
     description="analyse.py takes both an audio input and a descriptor, and creates the spectrum of the sound and the descriptor map of this sound",
     epilog="See link")
 parser.add_argument("soundFile", type=str, help="Soundfile to analyse")
-parser.add_argument("name", type=str, help="Name to give to the instrument")
-parser.add_argument("descriptor", type=str, help="Choose between concordance")
-ars = parser.parse_args()
+parser.add_argument("--descriptor", type=str, default="concordance", help="Choose between concordance")
+args = parser.parse_args()
 
 # Arguments
-script, soundFile, name, descriptor = argv
-
+soundFile = args.soundFile  # Correction : utiliser args.soundFile au lieu de soundFile non défini
+path = Path(soundFile)
+name_audio = path.stem
 
 # Constants
 BINS_PER_OCTAVE = 12*16
@@ -31,7 +35,6 @@ Notemin = 'C2'
 Notemax = 'D9'
 ambitus = 12
 ε = 1./(BINS_PER_OCTAVE/12)
-
 
 # Load audio
 y, sr = librosa.load(soundFile, sr=None)
@@ -41,24 +44,28 @@ chrom = np.abs(librosa.cqt(y, sr=sr, hop_length=512, fmin=fmin, bins_per_octave=
 spectrum = np.mean(chrom, axis=1)
 
 # Concordance courbe
-courbe = np.correlate(spectrum,spectrum,'full')
+courbe = np.correlate(spectrum, spectrum, 'full')
 courbe = courbe[n_bins:]
 
 # Map
-def map():
-    interv = np.arange(0,ambitus+ε,ε)
+def compute_map():
+    interv = np.arange(0, ambitus+ε, ε)
     N = len(interv)
-    G = np.zeros((N,N))
-    for i,int1 in enumerate(interv):
-        for j,int2 in enumerate(interv):
-            G[j,i] = courbe[i] + courbe[j] + courbe[i+j]
+    G = np.zeros((N, N))
+    for i, int1 in enumerate(interv):
+        for j, int2 in enumerate(interv):
+            G[j, i] = courbe[i] + courbe[j] + courbe[i+j]
     return G
 
-# Plot spectrum
-def plotSpectrum():
-    f, ax = plt.subplots(1)
+# Plot and save spectrum
+def plot_and_save_spectrum(output_path):
+    # Calcul de figsize pour 640x480 pixels avec dpi=100
+    width_inches = 640 / 100  # 6.4 pouces
+    height_inches = 480 / 100 # 4.8 pouces
+
+    f, ax = plt.subplots(1, figsize=(width_inches, height_inches))
     x = range(n_bins)
-    plt.plot(x,spectrum)
+    plt.plot(x, spectrum)
     plt.xlabel('Pitch axis')
     plt.ylabel('Amplitude')
     plt.title('Spectrum shape')
@@ -66,27 +73,55 @@ def plotSpectrum():
     ax.yaxis.set_tick_params(labelleft=False)
     ax.set_xticks([])
     ax.set_yticks([])
-    plt.show()
 
-# Plot Map
-def plotMap():
+    # Sauvegarder l'image
+    plt.savefig(output_path, bbox_inches='tight', dpi=300)
+    plt.close()  # Fermer la figure pour libérer la mémoire
+
+# Plot and save Map
+def plot_and_save_map(output_path):
     plotlines = True
     subd = 1
-    interv = np.arange(0,ambitus+ε,ε)
-    C = map()
-    # np.save('Harmonicity_K{}_15'.format(K),C)
-    # with open('Harmonicity_K{}.npy'.format(K), 'rb') as f:
-    #     C = np.transpose(np.load(f))
-    fig, ax = plt.subplots(1,figsize=(9, 7))
-    cs = ax.contourf(interv,interv,np.log(C),300,cmap=cm.jet)
+    interv = np.arange(0, ambitus+ε, ε)
+    C = compute_map()
+
+    # On garde figsize=(9, 7) pour conserver les proportions
+    fig, ax = plt.subplots(1, figsize=(9, 7))
+    cs = ax.contourf(interv, interv, np.log(C), 300, cmap=cm.jet)
+
     if plotlines:
-        plt.vlines(np.arange(0, ambitus, 1.0/subd), 0, interv[-1], alpha=0.4, linestyle='--', linewidth = 1.0)
-        plt.hlines(np.arange(0, ambitus, 1.0/subd), 0, interv[-1], alpha=0.4, linestyle='--', linewidth = 1.0)
+        plt.vlines(np.arange(0, ambitus, 1.0/subd), 0, interv[-1], alpha=0.4, linestyle='--', linewidth=1.0)
+        plt.hlines(np.arange(0, ambitus, 1.0/subd), 0, interv[-1], alpha=0.4, linestyle='--', linewidth=1.0)
+
     plt.xlabel('Lower interval (semitones)')
     plt.ylabel('Upper interval (semitones)')
     plt.title('Concordance of triads')
     cbar = fig.colorbar(cs)
-    plt.show()
 
-# plotSpectrum()
-plotMap()
+    # On utilise dpi=100 pour obtenir 900x700 pixels (9*100=900, 7*100=700)
+    plt.savefig(output_path, bbox_inches='tight', dpi=100)
+    plt.close()
+
+
+def generate_outputs_if_needed(output_path_spectrum, output_path_map):
+    """
+    Génère les spectrogrammes et les cartes uniquement si les fichiers de sortie n'existent pas déjà.
+    """
+    # Vérifie si les deux fichiers existent déjà
+    spectrum_exists = os.path.exists(output_path_spectrum)
+    map_exists = os.path.exists(output_path_map)
+
+    if spectrum_exists and map_exists:
+        return False  # Aucun traitement effectué
+    else:
+        plot_and_save_spectrum(output_path_spectrum)
+        plot_and_save_map(output_path_map)
+        return True  # Traitement effectué
+
+# Exécuter les fonctions
+if __name__ == "__main__":
+    output_path_map = PATH_OUTPUT_MAP / f"{name_audio}_map.png"
+    output_path_spectrum = PATH_OUTPUT_SPECTRUM / f"{name_audio}_spectrum.png"
+    generate_outputs_if_needed(output_path_spectrum, output_path_map)
+    print(name_audio)
+
