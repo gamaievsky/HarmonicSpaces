@@ -9,8 +9,8 @@ from matplotlib import cm
 print("Analyse in process...")
 # Paths
 PATH_SCRIPT = Path(__file__).parent.resolve()
-PATH_OUTPUT_MAP = PATH_SCRIPT.parent / "images" / "maps"  # Utilisation de / pour les Path
-PATH_OUTPUT_SPECTRUM = PATH_SCRIPT.parent / "images" / "spectrum"
+PATH_OUTPUT_MAP = PATH_SCRIPT.parent / "images" / "maps" / "User" # Utilisation de / pour les Path
+PATH_OUTPUT_SPECTRUM = PATH_SCRIPT.parent / "images" / "spectrum" / "User"
 
 # Créer les dossiers s'ils n'existent pas
 PATH_OUTPUT_MAP.mkdir(parents=True, exist_ok=True)
@@ -41,7 +41,7 @@ y, sr = librosa.load(soundFile, sr=None)
 fmin = librosa.note_to_hz(Notemin)
 n_bins = int((librosa.note_to_midi(Notemax) - librosa.note_to_midi(Notemin))*BINS_PER_OCTAVE/12)
 chrom = np.abs(librosa.cqt(y, sr=sr, hop_length=512, fmin=fmin, bins_per_octave=BINS_PER_OCTAVE, n_bins=n_bins, window=np.hanning))
-spectrum = np.mean(chrom, axis=1)
+spectrum = np.mean(chrom, axis=1) 
 
 # Concordance courbe
 courbe = np.correlate(spectrum, spectrum, 'full')

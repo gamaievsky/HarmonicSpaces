@@ -113,11 +113,11 @@
 				"box" : 				{
 					"comment" : "mute_coordinates",
 					"id" : "obj-7",
-					"index" : 2,
+					"index" : 0,
 					"maxclass" : "inlet",
 					"numinlets" : 0,
 					"numoutlets" : 1,
-					"outlettype" : [ "int" ],
+					"outlettype" : [ "" ],
 					"patching_rect" : [ 736.0, 192.0, 30.0, 30.0 ]
 				}
 
@@ -639,7 +639,7 @@
  ]
 					}
 ,
-					"patching_rect" : [ 379.0, 616.0, 259.0, 22.0 ],
+					"patching_rect" : [ 325.0, 577.0, 174.0, 22.0 ],
 					"saved_object_attributes" : 					{
 						"description" : "",
 						"digest" : "",
@@ -647,7 +647,7 @@
 						"tags" : ""
 					}
 ,
-					"text" : "p coordonates"
+					"text" : "p coordinates"
 				}
 
 			}
@@ -658,7 +658,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 285.0, 741.0, 79.0, 22.0 ],
+					"patching_rect" : [ 270.0, 740.0, 79.0, 22.0 ],
 					"text" : "0. 0."
 				}
 
@@ -766,11 +766,11 @@
 				"box" : 				{
 					"comment" : "mpeevent",
 					"id" : "obj-3",
-					"index" : 1,
+					"index" : 0,
 					"maxclass" : "inlet",
 					"numinlets" : 0,
 					"numoutlets" : 1,
-					"outlettype" : [ "int" ],
+					"outlettype" : [ "" ],
 					"patching_rect" : [ 325.0, 196.0, 30.0, 30.0 ]
 				}
 
@@ -792,11 +792,11 @@
 				"box" : 				{
 					"id" : "obj-1",
 					"maxclass" : "newobj",
-					"numinlets" : 2,
-					"numoutlets" : 6,
-					"outlettype" : [ "signal", "signal", "", "", "", "" ],
-					"patching_rect" : [ 325.0, 537.0, 313.0, 22.0 ],
-					"text" : "poly~ harmospa.voice4poly.maxpat 3 @steal 1 @target 0",
+					"numinlets" : 1,
+					"numoutlets" : 4,
+					"outlettype" : [ "", "", "", "" ],
+					"patching_rect" : [ 325.0, 537.0, 251.0, 22.0 ],
+					"text" : "poly~ coordinates.voice 3 @steal 1 @target 0",
 					"varname" : "poly"
 				}
 
@@ -806,7 +806,7 @@
 				"patchline" : 				{
 					"color" : [ 0.539114058017731, 0.349275499582291, 0.200490713119507, 1.0 ],
 					"destination" : [ "obj-94", 2 ],
-					"source" : [ "obj-1", 5 ]
+					"source" : [ "obj-1", 2 ]
 				}
 
 			}
@@ -814,7 +814,7 @@
 				"patchline" : 				{
 					"color" : [ 0.539114058017731, 0.349275499582291, 0.200490713119507, 1.0 ],
 					"destination" : [ "obj-94", 1 ],
-					"source" : [ "obj-1", 4 ]
+					"source" : [ "obj-1", 1 ]
 				}
 
 			}
@@ -822,7 +822,7 @@
 				"patchline" : 				{
 					"color" : [ 0.539114058017731, 0.349275499582291, 0.200490713119507, 1.0 ],
 					"destination" : [ "obj-94", 0 ],
-					"source" : [ "obj-1", 3 ]
+					"source" : [ "obj-1", 0 ]
 				}
 
 			}
@@ -915,7 +915,7 @@
 				"patchline" : 				{
 					"color" : [ 0.963324308395386, 0.615136981010437, 0.0517199896276, 1.0 ],
 					"destination" : [ "obj-89", 0 ],
-					"midpoints" : [ 469.5, 732.0, 294.5, 732.0 ],
+					"midpoints" : [ 469.5, 732.0, 279.5, 732.0 ],
 					"source" : [ "obj-48", 0 ]
 				}
 
@@ -940,7 +940,7 @@
 				"patchline" : 				{
 					"color" : [ 0.963324308395386, 0.615136981010437, 0.0517199896276, 1.0 ],
 					"destination" : [ "obj-42", 0 ],
-					"midpoints" : [ 294.5, 770.5, 479.5, 770.5 ],
+					"midpoints" : [ 279.5, 770.5, 479.5, 770.5 ],
 					"source" : [ "obj-89", 0 ]
 				}
 
@@ -963,7 +963,30 @@
 				}
 
 			}
- ]
+ ],
+		"parameters" : 		{
+			"obj-14" : [ "voice_number", "voice_number", 0 ],
+			"parameterbanks" : 			{
+				"0" : 				{
+					"index" : 0,
+					"name" : "",
+					"parameters" : [ "-", "-", "-", "-", "-", "-", "-", "-" ]
+				}
+
+			}
+,
+			"inherited_shortname" : 1
+		}
+,
+		"dependency_cache" : [ 			{
+				"name" : "coordinates.voice.maxpat",
+				"bootpath" : "~/Github/HarmonicSpaces/HarmonicSpaceProject/patchers",
+				"patcherrelativepath" : ".",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+ ],
+		"autosave" : 0
 	}
 
 }
