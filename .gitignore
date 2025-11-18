@@ -10,4 +10,7 @@ dist
 .vscode
 
 analyse/env/
+sounds/
+images/maps/
+images/spectrum/
 .DS_Store
