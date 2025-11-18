@@ -7,6 +7,8 @@ The principle is as follows. The user imports a basic sample. The harmonic descr
 
 For further explanations, please refer to the reading section.
 
+![](images/screen.png)
+
 ## Requirements
 
 In order to be able to do whatever you want with this project, you need run the following command on your machine:
